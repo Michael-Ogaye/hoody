@@ -10,7 +10,7 @@ from django.contrib.auth.models import User
 
 @login_required(login_url='login')
 def index(request):
-    return render(request, 'index.html')
+    return render(request, 'hoodapp/index.html')
 
 
 def signup(request):
@@ -34,7 +34,7 @@ def hoods(request):
     params = {
         'all_hoods': all_hoods,
     }
-    return render(request, 'all_hoods.html', params)
+    return render(request, 'hoodapp/all_hoods.html', params)
 
 
 def create_hood(request):
@@ -47,7 +47,7 @@ def create_hood(request):
             return redirect('hood')
     else:
         form = NeighbourHoodForm()
-    return render(request, 'newhood.html', {'form': form})
+    return render(request, 'hoodapp/newhood.html', {'form': form})
 
 
 def single_hood(request, hood_id):
@@ -71,13 +71,13 @@ def single_hood(request, hood_id):
         'form': form,
         'posts': posts
     }
-    return render(request, 'single_hood.html', params)
+    return render(request, 'hoodapp/single_hood.html', params)
 
 
 def hood_members(request, hood_id):
     hood = NeighbourHood.objects.get(id=hood_id)
     members = Profile.objects.filter(neighbourhood=hood)
-    return render(request, 'members.html', {'members': members})
+    return render(request, 'hoodapp/members.html', {'members': members})
 
 
 def create_post(request, hood_id):
@@ -92,7 +92,7 @@ def create_post(request, hood_id):
             return redirect('single-hood', hood.id)
     else:
         form = PostForm()
-    return render(request, 'post.html', {'form': form})
+    return render(request, 'hoodapp/post.html', {'form': form})
 
 
 def join_hood(request, id):
@@ -110,7 +110,7 @@ def leave_hood(request, id):
 
 
 def profile(request, username):
-    return render(request, 'profile.html')
+    return render(request, 'hoodapp/profile.html')
 
 
 def edit_profile(request, username):
@@ -122,7 +122,7 @@ def edit_profile(request, username):
             return redirect('profile', user.username)
     else:
         form = UpdateProfileForm(instance=request.user.profile)
-    return render(request, 'editprofile.html', {'form': form})
+    return render(request, 'hoodapp/editprofile.html', {'form': form})
 
 
 def search_business(request):
@@ -137,5 +137,5 @@ def search_business(request):
         }
         return render(request, 'results.html', params)
     else:
-        message = "You haven't searched for any image category"
-    return render(request, "results.html")
+        message = "You haven't searched for any business in the category"
+    return render(request, "hoodapp/results.html")
