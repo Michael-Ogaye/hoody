@@ -77,7 +77,7 @@ def single_hood(request, hood_id):
 def hood_members(request, hood_id):
     hood = NeighbourHood.objects.get(id=hood_id)
     members = Profile.objects.filter(neighbourhood=hood)
-    return render(request, 'hoodapp/members.html', {'members': members})
+    return render(request, 'hoodapp/neibas.html', {'members': members})
 
 
 def create_post(request, hood_id):
@@ -135,7 +135,7 @@ def search_business(request):
             'results': results,
             'message': message
         }
-        return render(request, 'results.html', params)
+        return render(request, 'hoodapp/searcha.html', params)
     else:
         message = "You haven't searched for any business in the category"
     return render(request, "hoodapp/results.html")
