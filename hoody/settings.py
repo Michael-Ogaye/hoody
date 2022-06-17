@@ -46,7 +46,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'hoodapp',
     'rest_framework',
-    'bootstap4',
+    'bootstrap4',
     'crispy_forms',
 ]
 
