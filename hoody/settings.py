@@ -170,6 +170,10 @@ EMAIL_PORT=config('EMAIL_PORT',cast=int)
 
 
 
+django_heroku.settings(locals())
+
+
+
 
 
 
