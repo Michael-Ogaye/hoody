@@ -1,3 +1,4 @@
+{% load static %}
 <nav id="sidebar" class="">
     <div class="sidebar-header ">
         <h3><a href="{% url 'index' %}">Hoody</a></h3>
@@ -7,7 +8,12 @@
     <ul class="list-unstyled components mr-2 ml-2">
         <li class="mb-4">
             <a href="{% url 'profile' user.username %}">
-                <img class="rounded-circle nav-img"src="{{ user.profile.profile_picture.url }}" alt="">
+                {%if user.profile.profile_picture%}
+                    
+                    <img class="rounded-circle nav-img"src="{{ user.profile.profile_picture.url }}" alt="">
+                    {%else%}
+                    <img class="rounded-circle nav-img"src="{% static 'images/better.png' %}" alt="">
+                    {%endif%}
                 &nbsp; Profile
             </a>
 
